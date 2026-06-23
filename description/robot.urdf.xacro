@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mon_robot">
+
+  <xacro:include filename="$(find mon_robot)/description/inertials.xacro"/>
+  <xacro:include filename="$(find mon_robot)/description/chassis.xacro"/>
+  <xacro:include filename="$(find mon_robot)/description/lidar.xacro"/>
+  <xacro:include filename="$(find mon_robot)/description/imu.xacro"/>
+  <xacro:include filename="$(find mon_robot)/description/control.xacro"/>
+
+</robot>

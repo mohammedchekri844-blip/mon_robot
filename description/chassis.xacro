@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ========== MATERIAUX ========== -->
+  <material name="white">  <color rgba="1 1 1 1"/>     </material>
+  <material name="blue">   <color rgba="0.2 0.2 1 1"/> </material>
+  <material name="black">  <color rgba="0 0 0 1"/>     </material>
+  <material name="red">    <color rgba="1 0 0 1"/>     </material>
+
+  <!-- ========== BASE LINK ========== -->
+  <link name="base_link"/>
+
+  <!-- ========== CHASSIS ========== -->
+  <joint name="base_to_chassis" type="fixed">
+    <origin xyz="-0.1 0 0" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child  link="chassis"/>
+  </joint>
+
+  <link name="chassis">
+    <visual>
+      <origin xyz="0.15 0 0.075"/>
+      <geometry><box size="0.3 0.3 0.15"/></geometry>
+      <material name="white"/>
+    </visual>
+    <collision>
+      <origin xyz="0.15 0 0.075"/>
+      <geometry><box size="0.3 0.3 0.15"/></geometry>
+    </collision>
+    <xacro:inertial_box mass="0.5" x="0.3" y="0.3" z="0.15"/>
+  </link>
+  <gazebo reference="chassis">
+    <material>Gazebo/White</material>
+  </gazebo>
+
+  <!-- ========== ROUE GAUCHE ========== -->
+  <joint name="left_wheel_joint" type="continuous">
+    <origin xyz="0 0.175 0" rpy="-${pi/2} 0 0"/>
+    <parent link="base_link"/>
+    <child  link="left_wheel_link"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <link name="left_wheel_link">
+    <visual>
+      <origin xyz="0 0 0" rpy = "0 0 0"/>
+      <geometry><cylinder radius="0.05" length="0.04"/></geometry>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <geometry><cylinder radius="0.05" length="0.04"/></geometry>
+    </collision>
+    <xacro:inertial_cylinder_z mass="0.1" radius="0.05" length="0.04"/>
+  </link>
+  <gazebo reference="left_wheel_link">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <!-- ========== ROUE DROITE ========== -->
+  <joint name="right_wheel_joint" type="continuous">
+    <origin xyz="0 -0.175 0" rpy="${pi/2} 0 0"/>
+    <parent link="base_link"/>
+    <child  link="right_wheel_link"/>
+    <axis xyz="0 0 -1"/>
+  </joint>
+
+  <link name="right_wheel_link">
+    <visual>
+      <origin xyz="0 0 0" rpy = "0 0 0"/>
+      <geometry><cylinder radius="0.05" length="0.04"/></geometry>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <geometry><cylinder radius="0.05" length="0.04"/></geometry>
+    </collision>
+    <xacro:inertial_cylinder_z mass="0.1" radius="0.05" length="0.04"/>
+  </link>
+  <gazebo reference="right_wheel_link">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <!-- ========== ROUE FOLLE (CASTOR) ========== -->
+  <joint name="castor_joint" type="fixed">
+    <origin xyz="0.24 0 0" rpy="0 0 0"/>
+    <parent link="chassis"/>
+    <child  link="castor"/>
+  </joint>
+
+  <link name="castor">
+    <visual>
+      <origin xyz="0 0 0" rpy = "0 0 0"/>
+      <geometry><sphere radius="0.05"/></geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry><sphere radius="0.05"/></geometry>
+    </collision>
+    <xacro:inertial_sphere mass="0.1" radius="0.05"/>
+  </link>
+  <gazebo reference="castor">
+    <material>Gazebo/Black</material>
+    <mu1 value="0.001"/>
+    <mu2 value="0.001"/>
+  </gazebo>
+
+</robot>
