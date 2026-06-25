@@ -4,18 +4,30 @@ from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
-import xacro
 
 def generate_launch_description():
 
-    pkg_name = 'mon_robot'
-    pkg_share = get_package_share_directory(pkg_name)
+    pkg_share = get_package_share_directory('mon_robot')
 
-    # URDF
+    # Fichier de configuration SLAM
+    slam_params = os.path.join(pkg_share, 'config', 'slam_toolbox_params.yaml')
+
+    # Lancer Gazebo avec le labyrinthe
+    gazebo = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(get_package_share_directory('gazebo_ros'),
+                         'launch', 'gazebo.launch.py')
+        ]),
+        launch_arguments={
+            'world': os.path.join(pkg_share, 'world', 'labyrinthe.world')
+        }.items()
+    )
+
+    # robot_state_publisher
+    import xacro
     xacro_file = os.path.join(pkg_share, 'description', 'robot.urdf.xacro')
     robot_description = xacro.process_file(xacro_file).toxml()
 
-    # robot_state_publisher
     rsp = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
@@ -24,17 +36,6 @@ def generate_launch_description():
             'robot_description': robot_description,
             'use_sim_time': True
         }]
-    )
-
-    # Gazebo
-    world_file = os.path.join(pkg_share, 'world', 'labyrinthe.world')
-
-    gazebo = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([
-            os.path.join(get_package_share_directory('gazebo_ros'),
-                         'launch', 'gazebo.launch.py')
-        ]),
-        launch_arguments={'world': world_file}.items()
     )
 
     # Spawn robot
@@ -46,8 +47,24 @@ def generate_launch_description():
             '-entity', 'mon_robot',
             '-x', '0.0',
             '-y', '0.0',
-            '-z', '0.1'
+            '-z', '0.05'
         ],
+        output='screen'
+    )
+
+    # SLAM Toolbox
+    slam = Node(
+        package='slam_toolbox',
+        executable='async_slam_toolbox_node',
+        name='slam_toolbox',
+        output='screen',
+        parameters=[slam_params]
+    )
+
+    # RViz
+    rviz = Node(
+        package='rviz2',
+        executable='rviz2',
         output='screen'
     )
 
@@ -55,4 +72,6 @@ def generate_launch_description():
         rsp,
         gazebo,
         spawn,
+        slam,
+        rviz,
     ])
