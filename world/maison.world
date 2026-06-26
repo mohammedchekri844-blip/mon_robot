@@ -1,0 +1,276 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="maison">
+
+    <include><uri>model://sun</uri></include>
+    <include><uri>model://ground_plane</uri></include>
+
+    <!-- ========== MURS EXTERIEURS ========== -->
+    <model name="mur_nord">
+      <static>true</static>
+      <pose>0 6 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>12 0.15 1</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>12 0.15 1</size></box></geometry>
+          <material><ambient>0.8 0.8 0.8 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="mur_sud">
+      <static>true</static>
+      <pose>0 -6 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>12 0.15 1</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>12 0.15 1</size></box></geometry>
+          <material><ambient>0.8 0.8 0.8 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="mur_ouest">
+      <static>true</static>
+      <pose>-6 0 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>0.15 12 1</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>0.15 12 1</size></box></geometry>
+          <material><ambient>0.8 0.8 0.8 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="mur_est">
+      <static>true</static>
+      <pose>6 0 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>0.15 12 1</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>0.15 12 1</size></box></geometry>
+          <material><ambient>0.8 0.8 0.8 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ========== MURS INTERIEURS ========== -->
+    <!-- Mur horizontal milieu avec porte large (2m) au centre -->
+    <model name="mur_h_gauche">
+      <static>true</static>
+      <pose>-4 0 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>4 0.15 1</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>4 0.15 1</size></box></geometry>
+          <material><ambient>0.7 0.6 0.5 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="mur_h_droit">
+      <static>true</static>
+      <pose>4 0 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>4 0.15 1</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>4 0.15 1</size></box></geometry>
+          <material><ambient>0.7 0.6 0.5 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Mur vertical gauche avec porte large (2m) -->
+    <model name="mur_v_gauche_bas">
+      <static>true</static>
+      <pose>-2 -4 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>0.15 4 1</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>0.15 4 1</size></box></geometry>
+          <material><ambient>0.7 0.6 0.5 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="mur_v_gauche_haut">
+      <static>true</static>
+      <pose>-2 4 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>0.15 4 1</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>0.15 4 1</size></box></geometry>
+          <material><ambient>0.7 0.6 0.5 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Mur vertical droit avec porte large (2m) -->
+    <model name="mur_v_droit_bas">
+      <static>true</static>
+      <pose>2 -4 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>0.15 4 1</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>0.15 4 1</size></box></geometry>
+          <material><ambient>0.7 0.6 0.5 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="mur_v_droit_haut">
+      <static>true</static>
+      <pose>2 4 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>0.15 4 1</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>0.15 4 1</size></box></geometry>
+          <material><ambient>0.7 0.6 0.5 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+    
+    
+    
+    
+    
+    
+    
+    
+    <model name="porte1">
+      <static>true</static>
+      <pose>-1.5 2 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>1 0.15 1</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>1 0.15 1</size></box></geometry>
+          <material><ambient>0.7 0.6 0.5 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="porte2">
+      <static>true</static>
+      <pose>-1.5 -2 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>1 0.15 1</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>1 0.15 1</size></box></geometry>
+          <material><ambient>0.7 0.6 0.5 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+    
+    
+    <model name="porte3">
+      <static>true</static>
+      <pose>1.5 2 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>1 0.15 1</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>1 0.15 1</size></box></geometry>
+          <material><ambient>0.7 0.6 0.5 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="porte4">
+      <static>true</static>
+      <pose>1.5 -2 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>1 0.15 1</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>1 0.15 1</size></box></geometry>
+          <material><ambient>0.7 0.6 0.5 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    <!-- ========== MEUBLES (loin des murs) ========== -->
+    <!-- Table salon bas gauche -->
+    <model name="table">
+      <static>true</static>
+      <pose>-4 -4 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>1 1 0.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>1 1 0.5</size></box></geometry>
+          <material><ambient>0.6 0.4 0.2 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Canape bas droit -->
+    <model name="canape">
+      <static>true</static>
+      <pose>4 -4 0.3 0 0 0</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>1.5 0.8 0.6</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>1.5 0.8 0.6</size></box></geometry>
+          <material><ambient>0.3 0.3 0.7 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Lit chambre haut gauche -->
+    <model name="lit_1">
+      <static>true</static>
+      <pose>-4 4 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>1.2 1.8 0.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>1.2 1.8 0.5</size></box></geometry>
+          <material><ambient>0.8 0.8 0.6 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Lit chambre haut droit -->
+    <model name="lit_2">
+      <static>true</static>
+      <pose>4 4 0.25 0 0 0</pose>
+      <link name="link">
+        <collision name="col"><geometry><box><size>1.2 1.8 0.5</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>1.2 1.8 0.5</size></box></geometry>
+          <material><ambient>0.8 0.7 0.6 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+    
+    <!-- Cylindre gauche couloir -->
+    <model name="cylindre_gauche">
+      <static>true</static>
+      <pose>0 4 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="col">
+          <geometry><cylinder><radius>0.5</radius><length>1</length></cylinder></geometry>
+        </collision>
+        <visual name="vis">
+          <geometry><cylinder><radius>0.5</radius><length>1</length></cylinder></geometry>
+          <material><ambient>0.2 0.6 0.2 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Cylindre droit couloir -->
+    <model name="cylindre_droit">
+      <static>true</static>
+      <pose>0 -4 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="col">
+          <geometry><cylinder><radius>0.5</radius><length>1</length></cylinder></geometry>
+        </collision>
+        <visual name="vis">
+          <geometry><cylinder><radius>0.5</radius><length>1</length></cylinder></geometry>
+          <material><ambient>0.2 0.6 0.2 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+  </world>
+</sdf>
