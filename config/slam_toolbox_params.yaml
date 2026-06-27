@@ -43,6 +43,6 @@ slam_toolbox:
 
     # Serialization
     serialize_map: true
-    serialization_filename: /home/ros2/ros2_ws/map/labyrinthe_map
+    serialization_filename: /home/ros2/ros2_ws/src/map/labyrinthe_map
 
     use_sim_time: true

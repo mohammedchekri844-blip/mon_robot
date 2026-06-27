@@ -1,115 +1,229 @@
 <?xml version="1.0" ?>
 <sdf version="1.6">
-  <world name="labyrinthe">
+  <world name="monde_obstacles">
 
-    <!-- Lumiere -->
-    <include>
-      <uri>model://sun</uri>
-    </include>
+    <include><uri>model://sun</uri></include>
+    <include><uri>model://ground_plane</uri></include>
 
-    <!-- Sol -->
-    <include>
-      <uri>model://ground_plane</uri>
-    </include>
+    <!-- ===== 4 MURS EXTERIEURS (8x8m) ===== -->
 
-    <!-- Mur 1 - bas -->
-    <model name="wall_1">
+    <model name="mur_bas">
       <static>true</static>
-      <pose>0 -2 0.5 0 0 0</pose>
+      <pose>0 -4 0.5 0 0 0</pose>
       <link name="link">
-        <collision name="collision">
-          <geometry><box><size>4 0.1 1</size></box></geometry>
-        </collision>
+        <collision name="collision"><geometry><box><size>8.2 0.2 1</size></box></geometry></collision>
         <visual name="visual">
-          <geometry><box><size>4 0.1 1</size></box></geometry>
-          <material>
-            <ambient>0.3 0.3 0.8 1</ambient>
-          </material>
+          <geometry><box><size>8.2 0.2 1</size></box></geometry>
+          <material><ambient>0.2 0.2 0.7 1</ambient></material>
         </visual>
       </link>
     </model>
 
-    <!-- Mur 2 - haut -->
-    <model name="wall_2">
+    <model name="mur_haut">
       <static>true</static>
-      <pose>0 2 0.5 0 0 0</pose>
+      <pose>0 4 0.5 0 0 0</pose>
       <link name="link">
-        <collision name="collision">
-          <geometry><box><size>4 0.1 1</size></box></geometry>
-        </collision>
+        <collision name="collision"><geometry><box><size>8.2 0.2 1</size></box></geometry></collision>
         <visual name="visual">
-          <geometry><box><size>4 0.1 1</size></box></geometry>
-          <material>
-            <ambient>0.3 0.3 0.8 1</ambient>
-          </material>
+          <geometry><box><size>8.2 0.2 1</size></box></geometry>
+          <material><ambient>0.2 0.2 0.7 1</ambient></material>
         </visual>
       </link>
     </model>
 
-    <!-- Mur 3 - gauche -->
-    <model name="wall_3">
+    <model name="mur_gauche">
       <static>true</static>
-      <pose>-2 0 0.5 0 0 0</pose>
+      <pose>-4 0 0.5 0 0 0</pose>
       <link name="link">
-        <collision name="collision">
-          <geometry><box><size>0.1 4 1</size></box></geometry>
-        </collision>
+        <collision name="collision"><geometry><box><size>0.2 8.2 1</size></box></geometry></collision>
         <visual name="visual">
-          <geometry><box><size>0.1 4 1</size></box></geometry>
-          <material>
-            <ambient>0.3 0.3 0.8 1</ambient>
-          </material>
+          <geometry><box><size>0.2 8.2 1</size></box></geometry>
+          <material><ambient>0.2 0.2 0.7 1</ambient></material>
         </visual>
       </link>
     </model>
 
-    <!-- Mur 4 - droite -->
-    <model name="wall_4">
+    <model name="mur_droite">
       <static>true</static>
-      <pose>2 0 0.5 0 0 0</pose>
+      <pose>4 0 0.5 0 0 0</pose>
       <link name="link">
-        <collision name="collision">
-          <geometry><box><size>0.1 4 1</size></box></geometry>
-        </collision>
+        <collision name="collision"><geometry><box><size>0.2 8.2 1</size></box></geometry></collision>
         <visual name="visual">
-          <geometry><box><size>0.1 4 1</size></box></geometry>
-          <material>
-            <ambient>0.3 0.3 0.8 1</ambient>
-          </material>
+          <geometry><box><size>0.2 8.2 1</size></box></geometry>
+          <material><ambient>0.2 0.2 0.7 1</ambient></material>
         </visual>
       </link>
     </model>
 
-    <!-- Obstacle 1 -->
-    <model name="obstacle_1">
+    <!-- ===== OBSTACLES INTERIEURS ===== -->
+
+    <!-- Boites carrees (rouge) -->
+    <model name="boite_1">
+      <static>true</static>
+      <pose>-2.5 2.5 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>0.6 0.6 1</size></box></geometry></collision>
+        <visual name="visual">
+          <geometry><box><size>0.6 0.6 1</size></box></geometry>
+          <material><ambient>0.8 0.2 0.2 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="boite_2">
+      <static>true</static>
+      <pose>1.0 2.0 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>0.6 0.6 1</size></box></geometry></collision>
+        <visual name="visual">
+          <geometry><box><size>0.6 0.6 1</size></box></geometry>
+          <material><ambient>0.8 0.2 0.2 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="boite_3">
+      <static>true</static>
+      <pose>-1.0 -1.5 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>0.6 0.6 1</size></box></geometry></collision>
+        <visual name="visual">
+          <geometry><box><size>0.6 0.6 1</size></box></geometry>
+          <material><ambient>0.8 0.2 0.2 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="boite_4">
+      <static>true</static>
+      <pose>2.5 -2.5 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>0.6 0.6 1</size></box></geometry></collision>
+        <visual name="visual">
+          <geometry><box><size>0.6 0.6 1</size></box></geometry>
+          <material><ambient>0.8 0.2 0.2 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="boite_5">
+      <static>true</static>
+      <pose>-2.5 -0.5 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>0.6 0.6 1</size></box></geometry></collision>
+        <visual name="visual">
+          <geometry><box><size>0.6 0.6 1</size></box></geometry>
+          <material><ambient>0.8 0.2 0.2 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="boite_6">
+      <static>true</static>
+      <pose>0.5 -3.0 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>0.6 0.6 1</size></box></geometry></collision>
+        <visual name="visual">
+          <geometry><box><size>0.6 0.6 1</size></box></geometry>
+          <material><ambient>0.8 0.2 0.2 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Piliers cylindriques (orange) -->
+    <model name="pilier_1">
+      <static>true</static>
+      <pose>-1.5 1.5 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><cylinder><radius>0.2</radius><length>1</length></cylinder></geometry></collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.2</radius><length>1</length></cylinder></geometry>
+          <material><ambient>0.9 0.5 0.1 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="pilier_2">
+      <static>true</static>
+      <pose>1.5 -1.0 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><cylinder><radius>0.2</radius><length>1</length></cylinder></geometry></collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.2</radius><length>1</length></cylinder></geometry>
+          <material><ambient>0.9 0.5 0.1 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="pilier_3">
+      <static>true</static>
+      <pose>3.0 1.5 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><cylinder><radius>0.2</radius><length>1</length></cylinder></geometry></collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.2</radius><length>1</length></cylinder></geometry>
+          <material><ambient>0.9 0.5 0.1 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="pilier_4">
+      <static>true</static>
+      <pose>-3.0 -2.5 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><cylinder><radius>0.2</radius><length>1</length></cylinder></geometry></collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.2</radius><length>1</length></cylinder></geometry>
+          <material><ambient>0.9 0.5 0.1 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Murs courts interieurs (gris) -->
+    <model name="mur_int_1">
       <static>true</static>
       <pose>0.5 0.5 0.5 0 0 0</pose>
       <link name="link">
-        <collision name="collision">
-          <geometry><box><size>0.5 0.5 1</size></box></geometry>
-        </collision>
+        <collision name="collision"><geometry><box><size>1.5 0.2 1</size></box></geometry></collision>
         <visual name="visual">
-          <geometry><box><size>0.5 0.5 1</size></box></geometry>
-          <material>
-            <ambient>0.8 0.3 0.3 1</ambient>
-          </material>
+          <geometry><box><size>1.5 0.2 1</size></box></geometry>
+          <material><ambient>0.5 0.5 0.5 1</ambient></material>
         </visual>
       </link>
     </model>
 
-    <!-- Obstacle 2 -->
-    <model name="obstacle_2">
+    <model name="mur_int_2">
       <static>true</static>
-      <pose>-0.5 -0.5 0.5 0 0 0</pose>
+      <pose>-1.5 -2.5 0.5 0 0 0</pose>
       <link name="link">
-        <collision name="collision">
-          <geometry><box><size>0.5 0.5 1</size></box></geometry>
-        </collision>
+        <collision name="collision"><geometry><box><size>0.2 1.5 1</size></box></geometry></collision>
         <visual name="visual">
-          <geometry><box><size>0.5 0.5 1</size></box></geometry>
-          <material>
-            <ambient>0.8 0.3 0.3 1</ambient>
-          </material>
+          <geometry><box><size>0.2 1.5 1</size></box></geometry>
+          <material><ambient>0.5 0.5 0.5 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="mur_int_3">
+      <static>true</static>
+      <pose>2.5 0.5 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>0.2 2.0 1</size></box></geometry></collision>
+        <visual name="visual">
+          <geometry><box><size>0.2 2.0 1</size></box></geometry>
+          <material><ambient>0.5 0.5 0.5 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="mur_int_4">
+      <static>true</static>
+      <pose>-0.5 3.0 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="collision"><geometry><box><size>2.0 0.2 1</size></box></geometry></collision>
+        <visual name="visual">
+          <geometry><box><size>2.0 0.2 1</size></box></geometry>
+          <material><ambient>0.5 0.5 0.5 1</ambient></material>
         </visual>
       </link>
     </model>
